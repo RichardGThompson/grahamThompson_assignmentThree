@@ -3,6 +3,7 @@
     background-color: #dfe6e9;
     display: flex;
     padding: 0 5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 
 .header .logo-container{
@@ -40,4 +41,11 @@
 
 .nav-elements-container ul li{
     margin: 1rem;
+    font-weight: 600;
+    color: #2980b9;
+    transition: color 0.25s;
+}
+
+.nav-elements-container ul li:hover{
+    color: #184b6c;
 }

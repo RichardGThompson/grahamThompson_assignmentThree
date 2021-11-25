@@ -1,0 +1,53 @@
+.homepage-title-container{
+    padding: 1rem 5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+.homepage-title-container h1, .homepage-title-container p{
+    margin: 0;
+    padding: 0;
+}
+
+.homepage-body{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    padding: 0 2rem;
+}
+
+.homepage-body .filter-sidebar{
+    border-right: 1px solid #bdc3c7;
+}
+
+.homepage-body .results-container{
+    
+}
+
+.filter-element{
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 1rem;
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.year-container .year-selection-container{
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    column-gap: 0.5rem;
+}
+
+.year-container .year-selection-container span{
+    width: 90%;
+    
+}
+
+.year-container .year-selection-container label{
+    text-align: center;
+    display: block;
+    width: 90%;
+}
+
+.year-container .year-selection-container input{
+    text-align: center;
+    width: 90%;
+}
