@@ -11,17 +11,29 @@ export const AddCar = (props) => {
 
 
     const addCarToDB = async(data) => {
+        let _data = {
+            make: data.make,
+            model: data.model,
+            year: parseInt(data.year),
+            color: data.color,
+            km: parseInt(data.km),
+            description: data.description,
+            images: data.images
+        }
+
+        // TODO Replace this with the required 'POST' request as per assignment guidelines
+
         try {
             const db = getFirestore();
             // Add a new document with a generated id.
             const docRef = await addDoc(collection(db, "cars"), {
-                make: data.make,
-                model: data.model,
-                year: parseInt(data.year),
-                color: data.color,
-                km: parseInt(data.km),
-                description: data.description,
-                images: data.images
+                make: _data.make,
+                model: _data.model,
+                year: parseInt(_data.year),
+                color: _data.color,
+                km: parseInt(_data.km),
+                description: _data.description,
+                images: _data.images
 
             });
             console.log("Document written with ID: ", docRef.id);
@@ -30,15 +42,9 @@ export const AddCar = (props) => {
             console.error("Error adding document: ", e);
         }
     }
-
-
-    // useEffect( () => {
-    //     testDocWrite();
-    // }, []);
-    
     
     const onSubmit = (data) => {
-        // Make the images into an array by delimiting my comma.
+        // Make the images into an array by delimiting by comma.
         const imageArray = data.carImages.split(',');
         console.log("Console Log: ~ file: index.jsx ~ line 38 ~ onSubmit ~ imageArray", imageArray);
         const payload = {
