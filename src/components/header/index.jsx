@@ -1,5 +1,6 @@
 import './styles.css';
 import Logo from '../../images/placeholder_logo.png';
+import {NavLink} from 'react-router-dom';
 
 export const Header = (props) => {
     return(
@@ -13,7 +14,7 @@ export const Header = (props) => {
                         <a href="#">Saved Cars</a>
                     </li>
                     <li>
-                        <a href="#">Add a Car</a>
+                        <NavLink to="/add-car">Add a Car</NavLink>
                     </li>
                 </ul>
                 

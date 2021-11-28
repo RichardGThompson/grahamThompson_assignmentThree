@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import {Header} from './components/header';
 import {HomePage} from './pages/homePage';
+import {AddCar} from './pages/addCar';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <Header/>
         <Routes>
           <Route exact path="/" element={<HomePage/>}/>
+
+          <Route path="/add-car" element={<AddCar/>}/>
         </Routes>
     </Router>
   );
