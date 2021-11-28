@@ -1,0 +1,61 @@
+.carCard{
+    width: 250px;
+    height: 250px;
+    background-color: rgba(0,0,0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    justify-content: center;
+    padding: 15px;
+    overflow: hidden;
+    color: #2d3436;
+}
+
+.carCard .car-images{
+    width: 250px;
+    height: 125px;
+}
+
+.carCard .car-images img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.carCard .car-info-container .make-model{
+    
+}
+
+.carCard .car-info-container .make-model h3{
+    font-weight: 400;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.carCard .car-info-container .details p{
+    padding: 0;
+    margin: 0;
+}
+
+.carCard .button-container{
+    margin-top: 10px;
+    height: 35px;
+}
+
+.carCard .button-container .btn{
+    text-decoration: none;
+    color: white;
+    background-color: #2980b9;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 10px;
+    transition: all 0.25s;
+}
+
+.carCard .button-container .btn:hover{
+    font-weight: 600;
+    background-color: #184b6c;
+}

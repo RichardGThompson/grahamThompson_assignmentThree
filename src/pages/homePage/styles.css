@@ -19,8 +19,10 @@
 }
 
 .homepage-body .results-container{
-    
+    padding: 0 2rem;
 }
+
+/****** FILTER ******/
 
 .filter-element{
     border-bottom: 1px solid #bdc3c7;
@@ -28,6 +30,15 @@
     margin: 0 1rem;
     display: flex;
     flex-direction: column;
+}
+
+.condition-container .input-span{
+    margin-bottom: 10px;
+}
+
+.condition-container .condition-label{
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .year-container .year-selection-container{
@@ -47,7 +58,17 @@
     width: 90%;
 }
 
-.year-container .year-selection-container input{
+.year-container .year-selection-container input, select{
     text-align: center;
     width: 90%;
+}
+
+.year-container .year-selection-container label{
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.year-container .year-selection-container select{
+    height: 3rem;
+    font-size: 1.8rem;
 }
