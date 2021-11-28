@@ -65,27 +65,47 @@ export const AddCar = (props) => {
             <p>Fill out the following details to add a car.</p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="carMake">Make</label>
-                <input {...register("carMake", {required: true, maxLength: 20})}/>
+                <div className="add-form">
+                    <span className="input-container">
+                        <label htmlFor="carMake">Make</label>
+                        <input {...register("carMake", {required: true, maxLength: 20})}/>
+                    </span>
+                    
+                    <span className="input-container">
+                        <label htmlFor="carModel">Model</label>
+                        <input {...register("carModel", {required: true, maxLength: 20})}/>
+                    </span>
+                    
+                    <span className="input-container">
+                        <label htmlFor="carYear">Year</label>
+                        <input {...register("carYear", {required:true, maxLength:4})} />
+                    </span>
 
-                <label htmlFor="carModel">Model</label>
-                <input {...register("carModel", {required: true, maxLength: 20})}/>
+                    <span className="input-container">
+                        <label htmlFor="carColor">Color</label>
+                        <input {...register('carColor', {required: true, maxLength:50})} />
+                    </span>
 
-                <label htmlFor="carYear">Year</label>
-                <input {...register("carYear", {required:true, maxLength:4})} />
+                    <span className="input-container">
+                        <label htmlFor="carKm">Odometer (km)</label>
+                        <input type="textbox" {...register('carKm', {required: true, maxLength: 10})} />
+                    </span>
 
-                <label htmlFor="carColor">Color</label>
-                <input {...register('carColor', {required: true, maxLength:50})} />
+                    <span className="input-container">
+                        <label htmlFor="carDescription">Description</label>
+                        <input {...register('carDescription', {required: true, maxLength:1024})}/>
+                    </span>
 
-                <label htmlFor="carKm">Odometer (km)</label>
-                <input {...register('carKm', {required: true, maxLength: 10})} />
+                    <span className="input-container">
+                        <label htmlFor="carImages">Image URLs (separate with comma)</label>
+                        <input {...register('carImages', {required: true, maxLength: 2048})}/>
+                    </span>
+                </div>
+                
 
-                <label htmlFor="carDescription">Description</label>
-                <input {...register('carDescription', {required: true, maxLength:1024})}/>
-
-                <label htmlFor="carImages">Image URLs (separate with comma)</label>
-                <input {...register('carImages', {required: true, maxLength: 2048})}/>
-                <input type="submit" />
+                <span className="form-button-container">
+                    <input type="submit" value="Add Car"/>
+                </span>
             </form>
         </div>
     )
