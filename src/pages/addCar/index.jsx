@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form';
 import React, {useEffect} from 'react';
 import {getDatabase} from 'firebase/database';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
+import { v4 as uuidv4 } from 'uuid';
 
 
 export const AddCar = (props) => {
@@ -12,6 +13,7 @@ export const AddCar = (props) => {
 
     const addCarToDB = async(data) => {
         let _data = {
+            id: data.id,
             make: data.make,
             model: data.model,
             year: parseInt(data.year),
@@ -27,6 +29,7 @@ export const AddCar = (props) => {
             const db = getFirestore();
             // Add a new document with a generated id.
             const docRef = await addDoc(collection(db, "cars"), {
+                id: _data.id,
                 make: _data.make,
                 model: _data.model,
                 year: parseInt(_data.year),
@@ -48,6 +51,7 @@ export const AddCar = (props) => {
         const imageArray = data.carImages.split(',');
         console.log("Console Log: ~ file: index.jsx ~ line 38 ~ onSubmit ~ imageArray", imageArray);
         const payload = {
+            id: uuidv4(),
             make: data.carMake,
             model: data.carModel,
             year: data.carYear,

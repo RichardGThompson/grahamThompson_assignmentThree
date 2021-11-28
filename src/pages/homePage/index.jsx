@@ -35,7 +35,6 @@ export const HomePage = (props) => {
             setFilteredCars(formattedData);
             carsContext.initCars(formattedData);
             setLoadingState(false);
-            console.log(formattedData);
         }
         catch(err){
 
@@ -49,47 +48,8 @@ export const HomePage = (props) => {
                 <p>Browse our new and pre-owned cars!</p>
             </div>
             <div className="homepage-body">
-                <div className="filter-sidebar">
-                    <div className="condition-container filter-element">
-                        <h2>Condition</h2>
-                        {/* Checkboxes to select the condition of the vehicle */}
-                        <span className="input-span">
-                            <input type="checkbox" id='condition-new' name="condition-new" value="New" />
-                            <label htmlFor="condition-new" className="condition-label">New</label>
-                        </span>
-
-                        <span>
-                            <input type="checkbox" id='condition-used' name="condition-used" value="Pre-Owned" />
-                            <label htmlFor="condition-used" className="condition-label">Pre-Owned</label>
-                        </span>
-                    </div>
-
-                    <div className="year-container filter-element">
-                        <h2>Model Year</h2>
-
-                        <div className="year-selection-container">
-                            <span>
-                                <label htmlFor="year-min">Min. Model Year</label>
-                                <select name='year-min' id='year-min'>
-                                    {years.map((year) => <OptionElem year={year}/>)}
-                                </select>
-                            </span>
-
-                            <span>
-                            </span>
-
-                            <span id='max-year-container'>
-                                <label htmlFor="year-max">Max. Model Year</label>
-                                <select name='year-max' id='year-max'>
-                                    {years.map((year) => <OptionElem year={year}/>)}
-                                </select>
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
                 <div className="results-container">
-                    {filteredCars.map( (car) => <CarCard year={car.year.integerValue} make={car.make.stringValue} model={car.model.stringValue} images={car.images.arrayValue.values} description={car.description.stringValue} km={car.km.integerValue} color={car.color.stringValue}/>)}
+                    {filteredCars.map( (car) => <CarCard id={car.id.stringValue} year={car.year.integerValue} make={car.make.stringValue} model={car.model.stringValue} images={car.images.arrayValue.values} description={car.description.stringValue} km={car.km.integerValue} color={car.color.stringValue}/>)}
                 </div>
             </div>
         </div>

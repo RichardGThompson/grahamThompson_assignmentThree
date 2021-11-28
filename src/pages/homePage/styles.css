@@ -9,78 +9,18 @@
 }
 
 .homepage-body{
-    display: grid;
-    grid-template-columns: 35% 65%;
-    padding: 0 2rem;
+    width: 100%;
 }
 
 .homepage-body .filter-sidebar{
     border-right: 1px solid #bdc3c7;
 }
 
-
-
-/****** FILTER ******/
-
-.filter-element{
-    border-bottom: 1px solid #bdc3c7;
-    padding-bottom: 1rem;
-    margin: 0 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.condition-container .input-span{
-    margin-bottom: 10px;
-}
-
-.condition-container .condition-label{
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.year-container .year-selection-container{
-    display: grid;
-    grid-template-columns: 45% 10% 45%;
-    column-gap: 0.5rem;
-}
-
-.year-container .year-selection-container span{
-    width: 90%;
-    
-}
-
-.year-container .year-selection-container label{
-    text-align: center;
-    display: block;
-    width: 90%;
-}
-
-.year-container .year-selection-container input, select{
-    text-align: center;
-    width: 90%;
-}
-
-.year-container .year-selection-container label{
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.year-container .year-selection-container select{
-    height: 3rem;
-    font-size: 1.8rem;
-}
-
 /****** RESULTS ******/
 .homepage-body .results-container{
-    padding: 1rem 2rem;
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 3rem;
-}
-
-@media screen and (min-width: 1280px) {
-    .homepage-body .results-container{
-        grid-template-columns: auto auto auto;
-    }
+    justify-content: center;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
