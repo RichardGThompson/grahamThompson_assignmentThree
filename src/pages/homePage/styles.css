@@ -18,9 +18,7 @@
     border-right: 1px solid #bdc3c7;
 }
 
-.homepage-body .results-container{
-    padding: 0 2rem;
-}
+
 
 /****** FILTER ******/
 
@@ -71,4 +69,12 @@
 .year-container .year-selection-container select{
     height: 3rem;
     font-size: 1.8rem;
+}
+
+/****** RESULTS ******/
+.homepage-body .results-container{
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

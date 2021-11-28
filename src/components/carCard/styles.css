@@ -8,11 +8,17 @@
     padding: 15px;
     overflow: hidden;
     color: #2d3436;
+    margin: 0 10px;
+    margin-bottom: 15px;
 }
 
 .carCard .car-images{
     width: 250px;
     height: 125px;
+}
+
+.carCard .car-images .swiper-container{
+    height: 100%;
 }
 
 .carCard .car-images img{
