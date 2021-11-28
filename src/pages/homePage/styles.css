@@ -74,7 +74,13 @@
 /****** RESULTS ******/
 .homepage-body .results-container{
     padding: 1rem 2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 3rem;
+}
+
+@media screen and (min-width: 1280px) {
+    .homepage-body .results-container{
+        grid-template-columns: auto auto auto;
+    }
 }
