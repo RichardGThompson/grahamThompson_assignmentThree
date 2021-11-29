@@ -1,7 +1,6 @@
 import './styles.css';
 import {useForm} from 'react-hook-form';
-import React, {useEffect} from 'react';
-import {getDatabase} from 'firebase/database';
+import React from 'react';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,6 +18,7 @@ export const AddCar = (props) => {
             year: parseInt(data.year),
             color: data.color,
             km: parseInt(data.km),
+            price: data.price,
             description: data.description,
             images: data.images
         }
@@ -35,6 +35,7 @@ export const AddCar = (props) => {
                 year: parseInt(_data.year),
                 color: _data.color,
                 km: parseInt(_data.km),
+                price: parseInt(_data.price),
                 description: _data.description,
                 images: _data.images
 
@@ -57,6 +58,7 @@ export const AddCar = (props) => {
             year: data.carYear,
             color: data.carColor,
             km: data.carKm,
+            price: data.carPrice,
             description: data.carDescription,
             images: imageArray
         };
@@ -93,6 +95,11 @@ export const AddCar = (props) => {
                     <span className="input-container">
                         <label htmlFor="carKm">Odometer (km)</label>
                         <input type="textbox" {...register('carKm', {required: true, maxLength: 10})} />
+                    </span>
+
+                    <span className="input-container">
+                        <label htmlFor="carPrice">Price</label>
+                        <input type="textbox" {...register('carPrice', {required: true, maxLength: 10})} />
                     </span>
 
                     <span className="input-container">

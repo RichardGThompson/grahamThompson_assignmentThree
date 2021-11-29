@@ -1,5 +1,5 @@
 import './styles.css';
-import {FaTachometerAlt, FaPalette} from 'react-icons/fa';
+import {FaTachometerAlt, FaPalette, FaMoneyBillWave} from 'react-icons/fa';
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
@@ -10,7 +10,7 @@ SwiperCore.use([Pagination]);
 
 export const CarCard = (props) => {
 
-    const {id, year, make, model, images, description, km, color} = props;
+    const {id, year, make, model, images, km, color, price} = props;
     
     return(
         <div className="carCard">
@@ -21,7 +21,7 @@ export const CarCard = (props) => {
                     centeredSlides={true}
                     pagination={{"clickable": true}}
                 >
-                    {props.images.map( function (carImage) {
+                    {images.map( function (carImage) {
                         return(
                            <SwiperSlide>
                                 <img src={carImage.stringValue} alt="" />
@@ -36,6 +36,7 @@ export const CarCard = (props) => {
                 <div className="details">
                     <p><strong><FaTachometerAlt/> {km}km</strong></p>
                     <p><strong><FaPalette/> {color}</strong></p>
+                    <p><strong><FaMoneyBillWave/> {`$${price}`}</strong></p>
                 </div>
             </div>
             <div className="button-container">

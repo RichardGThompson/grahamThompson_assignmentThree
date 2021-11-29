@@ -1,9 +1,8 @@
 import './styles.css';
-import {OptionElem} from './optionElem';
 import React, {useEffect, useState, useContext} from 'react';
-import {getAuth, onAuthStateChanged} from 'firebase/auth';
 import CarsContext from '../../context/carsContext';
 import {CarCard} from '../../components/carCard';
+
 
 export const HomePage = (props) => {
     const carsContext = useContext(CarsContext);
@@ -22,14 +21,18 @@ export const HomePage = (props) => {
         getCars();
     }, []);
 
+    console.log(carsContext.savedCars);
+
     const getCars = async() => {
         try{
-            const response = await fetch('https://firestore.googleapis.com/v1/projects/assignmentthree-8ce66/databases/(default)/documents/cars/');
+            console.log("Polling API...");
+            const response = await fetch(process.env.REACT_APP_API_ENDPOINT);
             const data = await response.json();
 
             const formattedData = data.documents.map( (item) => {
                 return item.fields;
             });
+
             
             setCars(formattedData);
             setFilteredCars(formattedData);
@@ -37,22 +40,33 @@ export const HomePage = (props) => {
             setLoadingState(false);
         }
         catch(err){
-
+            console.log("Console Log: ~ file: index.jsx ~ line 41 ~ getCars ~ err", err);
         }
     }
-    
-    return(
-        <div className="home-page-container">
-            <div className="homepage-title-container">
-                <h1>New and Pre-Owned Cars</h1>
-                <p>Browse our new and pre-owned cars!</p>
-            </div>
-            <div className="homepage-body">
-                <div className="results-container">
-                    {filteredCars.map( (car) => <CarCard id={car.id.stringValue} year={car.year.integerValue} make={car.make.stringValue} model={car.model.stringValue} images={car.images.arrayValue.values} description={car.description.stringValue} km={car.km.integerValue} color={car.color.stringValue}/>)}
+
+    if(!loading){
+        return(
+                <div className="home-page-container">
+                    <div className="homepage-title-container">
+                        <h1>New and Pre-Owned Cars</h1>
+                        <p>Browse our new and pre-owned cars!</p>
+                    </div>
+                    <div className="homepage-body">
+                        <div className="results-container">
+                            {filteredCars.map( (car) => <CarCard id={car.id.stringValue} year={car.year.integerValue} make={car.make.stringValue} model={car.model.stringValue} images={car.images.arrayValue.values} km={car.km.integerValue} price={car.price.integerValue} color={car.color.stringValue}/>)}
+                        </div>
+                    </div>
                 </div>
+                
+            );
+    }
+    else{
+        return(
+            <div className="home-page-container">
+                <h1>Loading...</h1>
             </div>
-        </div>
-        
-    );
+        )
+    }
+    
+    
 }

@@ -36,7 +36,7 @@ export const CarsContextProvider = (props) => {
     }
     
     return (<CarsContext.Provider
-     value={{cars: cars, initCars: initCars, addSavedCar: addSavedCar}}
+     value={{cars: cars, savedCars: savedCars, initCars: initCars, addSavedCar: addSavedCar}}
     >
         {props.children}
     </CarsContext.Provider>)

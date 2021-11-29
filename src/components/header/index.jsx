@@ -6,13 +6,12 @@ export const Header = (props) => {
     return(
         <div className="header">
             <div className="logo-container">
-                <img src={Logo} alt="" />
+                <a href="/">
+                    <img src={Logo} alt="" />
+                </a>
             </div>
             <div className="nav-elements-container">
                 <ul>
-                    <li>
-                        <a href="#">Saved Cars</a>
-                    </li>
                     <li>
                         <NavLink to="/add-car">Add a Car</NavLink>
                     </li>
