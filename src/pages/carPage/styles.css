@@ -46,3 +46,10 @@
 .swiper-container img{
     width: 100%;
 }
+
+
+@media screen and (max-width:810px) {
+    .car-page-wrapper{
+        grid-template-columns: 100%;
+    }
+}

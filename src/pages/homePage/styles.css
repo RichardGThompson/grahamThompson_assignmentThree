@@ -24,3 +24,9 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width: 500px) {
+    .homepage-title-container{
+        padding: 1rem;
+    }
+}
