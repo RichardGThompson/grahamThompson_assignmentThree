@@ -9,41 +9,92 @@ export const AddCar = (props) => {
     const {register, handleSubmit} = useForm();
     
 
+    // Left this code in commented as this is the way that Google suggests the operation be done.
+    // const addCarToDB = async(data) => {
+    //     let _data = {
+    //         id: data.id,
+    //         make: data.make,
+    //         model: data.model,
+    //         year: parseInt(data.year),
+    //         color: data.color,
+    //         km: parseInt(data.km),
+    //         price: data.price,
+    //         description: data.description,
+    //         images: data.images
+    //     }
+
+    //     try {
+    //         const db = getFirestore();
+    //         // Add a new document with a generated id.
+    //         const docRef = await addDoc(collection(db, "cars"), {
+    //             id: _data.id,
+    //             make: _data.make,
+    //             model: _data.model,
+    //             year: parseInt(_data.year),
+    //             color: _data.color,
+    //             km: parseInt(_data.km),
+    //             price: parseInt(_data.price),
+    //             description: _data.description,
+    //             images: _data.images
+    //         });
+    //         console.log("Document written with ID: ", docRef.id);
+    //     } 
+    //     catch (e) {
+    //         console.error("Error adding document: ", e);
+    //     }
+    // }
 
     const addCarToDB = async(data) => {
-        let _data = {
-            id: data.id,
-            make: data.make,
-            model: data.model,
-            year: parseInt(data.year),
-            color: data.color,
-            km: parseInt(data.km),
-            price: data.price,
-            description: data.description,
-            images: data.images
+        let formattedImages = {values: []};
+
+        for (let index = 0; index < data.images.length; index++) {
+            formattedImages.values.push({stringValue: data.images[index]});
+        }
+        
+        const formattedData = {
+            fields: {
+                id: {
+                    stringValue: data.id
+                },
+                make: {
+                    stringValue: data.make
+                },
+                model: {
+                    stringValue: data.model
+                },
+                year: {
+                    integerValue: parseInt(data.year)
+                },
+                color: {
+                    stringValue: data.color
+                },
+                km: {
+                    integerValue: parseInt(data.km)
+                },
+                price: {
+                    integerValue: parseInt(data.price)
+                },
+                description: {
+                    stringValue: data.description
+                },
+                images:
+                    {
+                        arrayValue: formattedImages
+                    },
+            }
         }
 
-        // TODO Replace this with the required 'POST' request as per assignment guidelines
-
-        try {
-            const db = getFirestore();
-            // Add a new document with a generated id.
-            const docRef = await addDoc(collection(db, "cars"), {
-                id: _data.id,
-                make: _data.make,
-                model: _data.model,
-                year: parseInt(_data.year),
-                color: _data.color,
-                km: parseInt(_data.km),
-                price: parseInt(_data.price),
-                description: _data.description,
-                images: _data.images
-
+        try{
+            const response = await fetch(process.env.REACT_APP_API_ENDPOINT, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(formattedData)
             });
-            console.log("Document written with ID: ", docRef.id);
-        } 
-        catch (e) {
-            console.error("Error adding document: ", e);
+        }
+        catch(error){
+            console.log(error);
         }
     }
     
@@ -104,7 +155,7 @@ export const AddCar = (props) => {
 
                     <span className="input-container">
                         <label htmlFor="carDescription">Description</label>
-                        <input {...register('carDescription', {required: true, maxLength:1024})}/>
+                        <input {...register('carDescription', {required: true, maxLength:4000})}/>
                     </span>
 
                     <span className="input-container">
