@@ -1,48 +1,13 @@
 import './styles.css';
 import {useForm} from 'react-hook-form';
 import React from 'react';
-import {collection, addDoc, getFirestore} from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
+import {useNavigate} from 'react-router-dom';
 
 
 export const AddCar = (props) => {
     const {register, handleSubmit} = useForm();
-    
-
-    // Left this code in commented as this is the way that Google suggests the operation be done.
-    // const addCarToDB = async(data) => {
-    //     let _data = {
-    //         id: data.id,
-    //         make: data.make,
-    //         model: data.model,
-    //         year: parseInt(data.year),
-    //         color: data.color,
-    //         km: parseInt(data.km),
-    //         price: data.price,
-    //         description: data.description,
-    //         images: data.images
-    //     }
-
-    //     try {
-    //         const db = getFirestore();
-    //         // Add a new document with a generated id.
-    //         const docRef = await addDoc(collection(db, "cars"), {
-    //             id: _data.id,
-    //             make: _data.make,
-    //             model: _data.model,
-    //             year: parseInt(_data.year),
-    //             color: _data.color,
-    //             km: parseInt(_data.km),
-    //             price: parseInt(_data.price),
-    //             description: _data.description,
-    //             images: _data.images
-    //         });
-    //         console.log("Document written with ID: ", docRef.id);
-    //     } 
-    //     catch (e) {
-    //         console.error("Error adding document: ", e);
-    //     }
-    // }
+    let navigate = useNavigate();
 
     const addCarToDB = async(data) => {
         let formattedImages = {values: []};
@@ -92,6 +57,8 @@ export const AddCar = (props) => {
                 method: "POST",
                 body: JSON.stringify(formattedData)
             });
+            console.log(response);
+            navigate('/');
         }
         catch(error){
             console.log(error);

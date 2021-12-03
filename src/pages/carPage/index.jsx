@@ -7,7 +7,6 @@ import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import SwiperCore, {Pagination} from 'swiper';
 import {FaTachometerAlt, FaPalette} from 'react-icons/fa';
-import {useNavigate} from 'react-router-dom';
 
 SwiperCore.use([Pagination]);
 
@@ -17,8 +16,6 @@ export const CarPage = (props) => {
     const carsContext = useContext(CarsContext);
 
     const [car, setCar] = useState();
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         const car = carsContext.cars.find((car) => car.id.stringValue === id);

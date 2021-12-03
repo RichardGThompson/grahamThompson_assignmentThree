@@ -7,7 +7,6 @@ import {CarCard} from '../../components/carCard';
 export const HomePage = (props) => {
     const carsContext = useContext(CarsContext);
 
-    const [cars, setCars] = useState([]);
     const [filteredCars, setFilteredCars] = useState([]);
     const [loading, setLoadingState] = useState(true);
 
@@ -18,32 +17,25 @@ export const HomePage = (props) => {
     }
 
     useEffect( () => {
+        const getCars = async() => {
+            try{
+                const response = await fetch(process.env.REACT_APP_API_ENDPOINT);
+                const data = await response.json();
+
+                const formattedData = data.documents.map( (item) => {
+                    return item.fields;
+                });
+                setFilteredCars(formattedData);
+                carsContext.initCars(formattedData);
+                setLoadingState(false);
+            }
+            catch(err){
+                console.log("Console Log: ~ file: index.jsx ~ line 41 ~ getCars ~ err", err);
+            }
+        }
         getCars();
     }, []);
-
-    console.log(carsContext.savedCars);
-
-    const getCars = async() => {
-        try{
-            console.log("Polling API...");
-            const response = await fetch(process.env.REACT_APP_API_ENDPOINT);
-            const data = await response.json();
-
-            const formattedData = data.documents.map( (item) => {
-                return item.fields;
-            });
-
-            
-            setCars(formattedData);
-            setFilteredCars(formattedData);
-            carsContext.initCars(formattedData);
-            setLoadingState(false);
-        }
-        catch(err){
-            console.log("Console Log: ~ file: index.jsx ~ line 41 ~ getCars ~ err", err);
-        }
-    }
-
+    
     if(!loading){
         return(
                 <div className="home-page-container">
